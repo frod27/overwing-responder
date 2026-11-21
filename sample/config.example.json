@@ -1,0 +1,23 @@
+{
+  "listen": { "host": "127.0.0.1", "port": 8790 },
+  "overwing_url": "https://overwing.ai",
+  "dry_run": true,
+  "min_severity": "critical",
+  "max_actions_per_hour": 10,
+  "command_timeout_seconds": 30,
+  "protect": ["arn:aws:iam::\\d{12}:user/break-glass", "arn:aws:iam::\\d{12}:root"],
+  "rules": [
+    {
+      "name": "quarantine an IAM user",
+      "action": "revoke_identity",
+      "match": "arn:aws:iam::\\d{12}:user/([A-Za-z0-9+=,.@_-]{1,64})",
+      "run": ["aws", "iam", "put-user-policy", "--user-name", "{1}", "--policy-name", "overwing-quarantine", "--policy-document", "file://sample/deny-all.json"]
+    },
+    {
+      "name": "quarantine a role's sessions",
+      "action": "revoke_identity",
+      "match": "arn:aws:sts::\\d{12}:assumed-role/([A-Za-z0-9+=,.@_-]{1,64})/[A-Za-z0-9+=,.@_-]{1,64}",
+      "run": ["aws", "iam", "put-role-policy", "--role-name", "{1}", "--policy-name", "overwing-quarantine", "--policy-document", "file://sample/deny-all.json"]
+    }
+  ]
+}
