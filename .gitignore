@@ -3,3 +3,5 @@ node_modules
 config.json
 *.pem
 .env*
+overwing-responder-state.json*
+*.state.json

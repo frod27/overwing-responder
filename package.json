@@ -1,6 +1,6 @@
 {
   "name": "overwing-responder",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Carries out, on your side and with your own credentials, what an Overwing Radar incident asks for: disable an identity, block an address. Signed webhooks in, your own commands out, a report back.",
   "private": true,
   "type": "module",

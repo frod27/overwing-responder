@@ -12,14 +12,14 @@
     "first_event_at": "2026-11-21T11:59:40.000Z",
     "last_event_at": "2026-11-21T12:00:03.000Z",
     "recommended_actions": [
-      { "action": "quarantine_surface", "surface": "s3://acme-build-artifacts", "reason": "A decoy on this surface was touched: stop writes to it until the actors are accounted for." },
-      { "action": "revoke_identity", "surface": null, "actors": ["arn:aws:iam::111122223333:user/svc-reports"], "reason": "These identities touched a decoy. Disable their credentials until each is accounted for." }
+      { "action": "quarantine_surface", "surface": "s3://acme-build-artifacts", "detectors": ["decoy_touch"], "reason": "A decoy on this surface was touched: stop writes to it until the actors are accounted for." },
+      { "action": "revoke_identity", "surface": null, "actors": ["arn:aws:iam::111122223333:user/svc-reports"], "detectors": ["decoy_touch"], "reason": "These identities touched a decoy. Disable their credentials until each is accounted for." }
     ],
     "response": {
       "requested": true,
       "actions": [
-        { "action": "quarantine_surface", "surface": "s3://acme-build-artifacts", "reason": "A decoy on this surface was touched: stop writes to it until the actors are accounted for." },
-        { "action": "revoke_identity", "surface": null, "actors": ["arn:aws:iam::111122223333:user/svc-reports"], "reason": "These identities touched a decoy. Disable their credentials until each is accounted for." }
+        { "action": "quarantine_surface", "surface": "s3://acme-build-artifacts", "detectors": ["decoy_touch"], "reason": "A decoy on this surface was touched: stop writes to it until the actors are accounted for." },
+        { "action": "revoke_identity", "surface": null, "actors": ["arn:aws:iam::111122223333:user/svc-reports"], "detectors": ["decoy_touch"], "reason": "These identities touched a decoy. Disable their credentials until each is accounted for." }
       ],
       "report_to": "https://overwing.ai/api/v1/swarm/incidents/swi_AbCdEfGhIj0123456789/responses"
     },
